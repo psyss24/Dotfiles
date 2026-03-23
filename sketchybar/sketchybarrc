@@ -1,0 +1,100 @@
+
+
+if [ -z "$CONFIG_DIR" ]; then
+      export CONFIG_DIR="$HOME/.config/sketchybar"
+fi
+
+source "$CONFIG_DIR/helpers/constants.sh"
+
+ITEM_DIR="$CONFIG_DIR/items"
+PLUGIN_DIR="$CONFIG_DIR/plugins"
+
+sketchybar --bar height=32 \
+                 color=0x00000000 \
+                 blur_radius=16 \
+                 border_width=0 \
+                 corner_radius=6 \
+                 shadow=on \
+                 shadow_distance=4 \
+                 shadow_angle=270 \
+                 shadow_color=0x12000000 \
+                 position=top \
+                 sticky=on \
+                 padding_right=16 \
+                 padding_left=16 \
+                 y_offset=5 \
+                 margin=0 \
+                 topmost=window \
+                 display=all
+
+sketchybar --default padding_left=2 \
+                     padding_right=2 \
+                     icon.font.family="$BAR_FONT_FAMILY" \
+                     icon.font.style="Bold" \
+                     icon.font.size=14.0 \
+                     icon.color=$BAR_ICON_COLOR \
+                     icon.highlight_color=$BAR_ICON_COLOR_HIGHLIGHT \
+                     icon.padding_left=8 \
+                     icon.padding_right=8 \
+                     label.font.family="$BAR_FONT_FAMILY" \
+                     label.font.style="Bold" \
+                     label.font.size=13.0 \
+                     label.color=$BAR_LABEL_COLOR \
+                     label.highlight_color=$BAR_LABEL_COLOR_HIGHLIGHT \
+                     label.padding_left=8 \
+                     label.padding_right=8 \
+                     label.max_chars=35 \
+                     background.height=28 \
+                     background.corner_radius=9 \
+                     background.border_width=0 \
+                     background.color=0x18ffffff \
+                     background.shadow.drawing=on \
+                     background.shadow.color=0x02000000 \
+                     background.shadow.distance=1 \
+                     popup.background.border_width=2 \
+                     popup.background.corner_radius=14 \
+                     popup.background.color=$BAR_POPUP_BG_COLOR \
+                     popup.background.border_color=$BAR_POPUP_BORDER_COLOR \
+                     popup.blur_radius=30 \
+                     popup.background.shadow.drawing=on \
+                     scroll_texts=off
+
+source "$ITEM_DIR/apple.sh"
+source "$ITEM_DIR/spaces.sh"
+source "$ITEM_DIR/front_app.sh"
+
+source "$ITEM_DIR/battery.sh"
+source "$ITEM_DIR/clock.sh"
+source "$ITEM_DIR/volume.sh"
+source "$ITEM_DIR/weather.sh"
+source "$ITEM_DIR/pomodoro.sh"
+source "$ITEM_DIR/dnd.sh"
+
+sketchybar --add bracket right_section \
+                          battery \
+                          clock \
+                          volume_icon \
+                          weather \
+                          pomodoro \
+                          dnd \
+           --set right_section \
+                 background.color=0x28ffffff \
+                 background.corner_radius=18 \
+                 background.border_width=1 \
+                 background.border_color=0x40ffffff \
+                 background.height=32 \
+                 background.shadow.drawing=on \
+                 background.shadow.color=0x06000000 \
+                 background.shadow.angle=270 \
+                 background.shadow.distance=2
+
+sketchybar --update
+
+sketchybar --trigger aerospace_workspace_change
+
+echo "✅ SketchyBar configuration loaded successfully!"
+echo "   • Multi-workspace display active (workspaces 1-9)"
+echo "   • Aerospace integration enabled"
+echo "   • Glassy transparent style applied"
+echo "   • Shell-only configuration (no conflicts)"
+
