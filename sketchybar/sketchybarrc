@@ -92,9 +92,3 @@ sketchybar --update
 
 sketchybar --trigger aerospace_workspace_change
 
-echo "✅ SketchyBar configuration loaded successfully!"
-echo "   • Multi-workspace display active (workspaces 1-9)"
-echo "   • Aerospace integration enabled"
-echo "   • Glassy transparent style applied"
-echo "   • Shell-only configuration (no conflicts)"
-
